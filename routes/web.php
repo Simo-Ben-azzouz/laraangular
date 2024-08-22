@@ -13,9 +13,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', "SiteController@index");
+Route::get('/', "SiteController@sevices");
+Route::get('/', "SiteController@blog");
+Route::get('/', "SiteController@about");
+Route::get('/', "SiteController@contact");
 
 
 Route::group(['prefix' => 'admin'], function () {
