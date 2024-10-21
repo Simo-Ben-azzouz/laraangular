@@ -12,12 +12,20 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+// Route::get('/', 'App\Http\Controllers\SiteController@index');
+// Route::get('/', [App\Http\Controllers\SiteController::class, 'index']);
 
-Route::get('/', "SiteController@index");
-Route::get('/', "SiteController@sevices");
-Route::get('/', "SiteController@blog");
-Route::get('/', "SiteController@about");
-Route::get('/', "SiteController@contact");
+// Route::get('/', "SiteController@index");
+// Route::get('/services', "SiteController@services");
+// Route::get('/blog', "SiteController@blog");
+// Route::get('/about', "SiteController@about");
+// Route::get('/contact', "SiteController@contact");
+Route::get('/', [App\Http\Controllers\SiteController::class, 'index']);
+Route::get('/services', [App\Http\Controllers\SiteController::class, 'services']);
+Route::get('/blog', [App\Http\Controllers\SiteController::class, 'blog']);
+Route::get('/about', [App\Http\Controllers\SiteController::class, 'about']);
+Route::get('/contact', [App\Http\Controllers\SiteController::class, 'contact']);
+
 
 
 Route::group(['prefix' => 'admin'], function () {
