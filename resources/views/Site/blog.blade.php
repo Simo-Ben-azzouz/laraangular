@@ -13,13 +13,16 @@
     </div>
   </div>
   <div class="container">
-    <div class="columns is-marginless">
+      
+      @foreach($posts -> chunk(2) as $chunk)
+      <div class="columns is-marginless">
+            @foreach($chunk as $post)
         <div class="column">
         <div class="card">
   <div class="card-image">
     <figure class="image is-16by9">
       <img
-        src="https://bulma.io/assets/images/placeholders/1280x960.png"
+        src="{{ url('/storage/'.$post -> image) }}"
         alt="Placeholder image"
       />
     </figure>
@@ -27,68 +30,24 @@
   <div class="card-content">
     <div class="media">
       <div class="media-left">
-        <figure class="image is-48x48">
-          <img
-            src="https://bulma.io/assets/images/placeholders/96x96.png"
-            alt="Placeholder image"
-          />
-        </figure>
+      <p class="title is-4 has-text-white">{{ $post -> title }}</p>
+
       </div>
-      <div class="media-content">
-        <p class="title is-4 has-text-white">John Smith</p>
-        <p class="subtitle is-6 has-text-white">@johnsmith</p>
-      </div>
+
     </div>
 
     <div class="content">
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec
-      iaculis mauris. <a>@bulmaio</a>. <a href="#">#css</a>
-      <a href="#">#responsive</a>
+            {{ $post ->excerpt }}
       <br />
       <time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time>
     </div>
   </div>
 </div>
         </div>
-
-        <div class="column">
-        <div class="card">
-  <div class="card-image">
-    <figure class="image is-16by9">
-      <img
-        src="https://bulma.io/assets/images/placeholders/1280x960.png"
-        alt="Placeholder image"
-      />
-    </figure>
-  </div>
-  <div class="card-content">
-    <div class="media">
-      <div class="media-left">
-        <figure class="image is-48x48">
-          <img
-            src="https://bulma.io/assets/images/placeholders/96x96.png"
-            alt="Placeholder image"
-          />
-        </figure>
-      </div>
-      <div class="media-content">
-        <p class="title is-4 has-text-white">John Smith</p>
-        <p class="subtitle is-6 has-text-white">@johnsmith</p>
-      </div>
+        @endforeach
     </div>
-
-    <div class="content">
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec
-      iaculis mauris. <a>@bulmaio</a>. <a href="#">#css</a>
-      <a href="#">#responsive</a>
-      <br />
-      <time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time>
+        @endforeach
     </div>
-  </div>
-</div>
-        </div>
-    </div>
-  </div>
 </section>
 
 @endsection
