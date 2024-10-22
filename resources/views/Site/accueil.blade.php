@@ -1,1 +1,1 @@
-uu
+@extends('master')
