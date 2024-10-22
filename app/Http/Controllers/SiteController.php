@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\Post;
 use Illuminate\Http\Request;
 
 class SiteController extends Controller
@@ -15,7 +15,8 @@ class SiteController extends Controller
     }
 
     public function blog(){
-       return view('Site.blog');        
+         $posts = Post::all();
+       return view('Site.blog' ,['posts' => $posts]);        
     }
 
     public function about(){
