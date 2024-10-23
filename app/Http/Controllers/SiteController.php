@@ -15,7 +15,7 @@ class SiteController extends Controller
     }
 
     public function blog(){
-         $posts = Post::all();
+         $posts = Post::paginate(4);
        return view('Site.blog' ,['posts' => $posts]);        
     }
 
