@@ -10,12 +10,18 @@
   </ul>
 </nav>
         <p class="title">Our blog</p>
+
+
+        </div>
+    </div>
+
+</section>
     </div>
   </div>
   <div class="container">
       
       @foreach($posts -> chunk(2) as $chunk)
-      <div class="columns is-marginless">
+      <div class="columns mt-4 mb-4">
             @foreach($chunk as $post)
         <div class="column">
         <div class="card">
@@ -37,9 +43,11 @@
     </div>
 
     <div class="content">
-            {{ $post ->excerpt }}
+            <!-- {{ $post ->excerpt }} -->
+            {!! Str::limit($post ->excerpt, 90, ' ...') !!}
+
       <br />
-      <time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time>
+      <time>{{ carbon\carbon::parse($post -> created_at)->ToFormattedDateString() }}</time>
     </div>
   </div>
 </div>
@@ -47,7 +55,23 @@
         @endforeach
     </div>
         @endforeach
+        <div class="is-marginless columns mt-4 mb-4">
+    
+    <div class="column is-half" align='left'>
+        @if($posts->currentPage() > 1)
+            <a href="{{ $posts->previousPageUrl() }}" class="button is-dark">
+                <span>Previous</span>
+            </a>
+        @endif
     </div>
-</section>
 
+    <div class="column is-half" align='right'>
+        @if ($posts->hasMorePages())
+            <a href="{{ $posts->nextPageUrl() }}" class="button is-dark">
+                <span>Next</span>
+            </a>
+        @endif
+    </div>
+
+</div>
 @endsection
