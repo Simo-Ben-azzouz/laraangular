@@ -26,4 +26,9 @@ class SiteController extends Controller
     public function contact(){
        return view('Site.contact');        
     }
+
+    public function show($id){
+        $post = Post::find($id);
+      return view('Site.show',['post' => $post]);        
+   }
 }
