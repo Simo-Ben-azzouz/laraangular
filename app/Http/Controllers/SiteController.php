@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\Post;
+use App\Models\Post,App\Models\Service;
 use Illuminate\Http\Request;
 
 class SiteController extends Controller
@@ -11,7 +11,8 @@ class SiteController extends Controller
     }
 
     public function services(){
-       return view('Site.services');        
+         $services = Service::all();
+       return view('Site.services',['services'=> $services]);        
     }
 
     public function blog(){
