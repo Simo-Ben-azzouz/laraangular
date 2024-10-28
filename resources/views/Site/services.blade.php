@@ -27,7 +27,7 @@
         <div class="card">
   <div class="card-image">
     <figure class="image is-16by9">
-      <a href="{{ url('blog/'.$service->id) }}">
+      <a href="{{ url('service/'.$service->id) }}">
         <img
           src="{{ url('/storage/'.$service -> image) }}"
           alt="Placeholder image"

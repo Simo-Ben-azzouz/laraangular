@@ -15,6 +15,11 @@ class SiteController extends Controller
        return view('Site.services',['services'=> $services]);        
     }
 
+    public function service($id){
+      $service = Service::find($id);
+    return view('Site.service',['service'=> $service]);        
+ }
+
     public function blog(){
          $posts = Post::paginate(4);
        return view('Site.blog' ,['posts' => $posts]);        

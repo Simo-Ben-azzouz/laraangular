@@ -26,6 +26,7 @@ Route::get('/blog', [App\Http\Controllers\SiteController::class, 'blog']);
 Route::get('/about', [App\Http\Controllers\SiteController::class, 'about']);
 Route::get('/contact', [App\Http\Controllers\SiteController::class, 'contact']);
 Route::get('/blog/{id}', [App\Http\Controllers\SiteController::class, 'show']);
+Route::get('/service/{id}', [App\Http\Controllers\SiteController::class, 'service']);
 
 
 
