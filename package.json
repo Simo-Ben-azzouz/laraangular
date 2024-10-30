@@ -16,6 +16,7 @@
         "postcss": "^8.1.14"
     },
     "dependencies": {
-        "bulma": "^1.0.2"
+        "bulma": "^1.0.2",
+        "bulma-carousel": "^4.0.24"
     }
 }
