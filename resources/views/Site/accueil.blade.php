@@ -10,15 +10,12 @@
         <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
     </div>
     <div class="carousel-inner">
+        @foreach($slides as $slide)
         <div class="carousel-item active">
-            <img src="https://wikiki.github.io/images/merry-christmas.jpg" class="d-block w-100" alt="Merry Christmas">
+            <img src="{{ asset('/storage/'.$slide -> image) }}" class="d-block w-100" alt="Merry Christmas">
+            <div class="title">{{ $slide->title }}</div>
         </div>
-        <div class="carousel-item">
-            <img src="https://wikiki.github.io/images/singer.jpg" class="d-block w-100" alt="Singer">
-        </div>
-        <div class="carousel-item">
-            <img src="https://wikiki.github.io/images/sushi.jpg" class="d-block w-100" alt="Sushi">
-        </div>
+        @endforeach
     </div>
     <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>

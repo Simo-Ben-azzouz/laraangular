@@ -1,13 +1,14 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\Post,App\Models\Service;
+use App\Models\Post,App\Models\Service,App\Models\Slide;
 use Illuminate\Http\Request;
 
 class SiteController extends Controller
 {
     public function index(){
-       return view('Site.accueil');    
+         $slides = Slide::orderBy('created_at','desc')->take(3)->get();  
+       return view('Site.accueil',['slides'=>$slides]);    
     }
 
     public function services(){
