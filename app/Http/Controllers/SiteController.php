@@ -8,7 +8,10 @@ class SiteController extends Controller
 {
     public function index(){
          $slides = Slide::orderBy('created_at','desc')->take(3)->get();  
-       return view('Site.accueil',['slides'=>$slides]);    
+         $services = Service::take(3)->get();
+         $posts = Post::take(4)->get();
+
+       return view('Site.accueil',['slides'=>$slides,'services'=> $services,'posts'=> $posts]);    
     }
 
     public function services(){

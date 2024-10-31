@@ -12,8 +12,8 @@
     <div class="carousel-inner">
         @foreach($slides as $slide)
         <div class="carousel-item active">
+        <div class="title" align='center'>{{ $slide->title }}</div>
             <img src="{{ asset('/storage/'.$slide -> image) }}" class="d-block w-100" alt="Merry Christmas">
-            <div class="title">{{ $slide->title }}</div>
         </div>
         @endforeach
     </div>
@@ -27,7 +27,78 @@
     </button>
 </div>
 
+<!-- services -->
+    <div class="container">
+        <h2>Our Service</h2>
+        <div class="columns ">
+        @foreach($services as $service)
+        <div class="column">
+        <div class="card">
+  <div class="card-image">
+    <figure class="image is-16by9">
+      <a href="{{ url('service/'.$service->id) }}">
+        <img
+          src="{{ url('/storage/'.$service -> image) }}"
+          alt="Placeholder image"
+        />
+      </a>
+    </figure>
+  </div>
+  <div class="card-content">
+    <div class="media">
+      <div class="media-left">
+      <p class="title is-4 has-text-black">{{ $service -> title }}</p>
 
+      </div>
+
+    </div>
+        <button class='button is-warning'>More</button>
+  </div>
+</div>
+        </div>
+        @endforeach
+        </div>
+
+    <!-- Posts -->
+     <h2>Trends</h2>
+     @foreach($posts -> chunk(2) as $chunk)
+      <div class="columns mt-4 mb-4">
+            @foreach($chunk as $post)
+        <div class="column">
+        <div class="card">
+  <div class="card-image">
+    <figure class="image is-16by9">
+      <a href="{{ url('blog/'.$post->id) }}">
+        <img
+          src="{{ url('/storage/'.$post -> image) }}"
+          alt="Placeholder image"
+        />
+      </a>
+    </figure>
+  </div>
+  <div class="card-content">
+    <div class="media">
+      <div class="media-left">
+      <p class="title is-4 has-text-black">{{ $post -> title }}</p>
+
+      </div>
+
+    </div>
+
+    <div class="content has-text-black">
+            <!-- {{ $post ->excerpt }} -->
+            {!! Str::limit($post ->excerpt, 90, ' ...') !!}
+
+      <br />
+      <time>{{ carbon\carbon::parse($post -> created_at)->ToFormattedDateString() }}</time>
+    </div>
+  </div>
+</div>
+        </div>
+        @endforeach
+    </div>
+        @endforeach
+        </div>
 
 @endsection
 
