@@ -26,10 +26,11 @@
         <span class="visually-hidden">Next</span>
     </button>
 </div>
-
+<br><br><br>
 <!-- services -->
+<div class="is-divider" data-content="Our Service"></div>
+
     <div class="container">
-        <h2>Our Service</h2>
         <div class="columns ">
         @foreach($services as $service)
         <div class="column">
@@ -52,15 +53,20 @@
       </div>
 
     </div>
-        <button class='button is-warning'>More</button>
+        <button class='button is-primary'>More</button>
   </div>
 </div>
         </div>
         @endforeach
         </div>
+</div>
+<br><br><br>
+<div class="is-divider" data-content="Trends"></div>
+<section class="hero is-primary">
+  <div class="hero-body">
 
-    <!-- Posts -->
-     <h2>Trends</h2>
+    <div class="container">
+       <!-- Posts -->
      @foreach($posts -> chunk(2) as $chunk)
       <div class="columns mt-4 mb-4">
             @foreach($chunk as $post)
@@ -98,8 +104,9 @@
         @endforeach
     </div>
         @endforeach
-        </div>
-
+    </div>
+  </div>
+</section>
 @endsection
 
 
@@ -109,6 +116,9 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
 <!-- Optional: Include Font Awesome for Icons -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<!-- bulma divider -->
+<link rel="stylesheet" href="{{ asset('css/bulma-divider.min.css') }}">
+
 
 @endsection
 
