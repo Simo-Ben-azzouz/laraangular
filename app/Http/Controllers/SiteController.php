@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\Post,App\Models\Service,App\Models\Slide;
+use App\Models\Post,App\Models\Service,App\Models\Slide,App\Models\Page;
 use Illuminate\Http\Request;
 
 class SiteController extends Controller
@@ -30,7 +30,8 @@ class SiteController extends Controller
     }
 
     public function about(){
-       return view('Site.about');        
+      $page =Page::where('slug','about1')->first();
+       return view('Site.about',['page'=>$page]);        
     }
 
     public function contact(){
