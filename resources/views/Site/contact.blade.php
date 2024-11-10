@@ -31,7 +31,7 @@
     <div class="tile is-parent">
       <article class="tile is-child box notification">
         <p class="title">Telephone</p>
-        <p class="subtitle">0699349419</p>
+        <p class="subtitle">{!!setting('contact.telephone')!!}</p>
       </article>
     </div>
     <br>
@@ -39,7 +39,7 @@
     <div class="tile is-parent">
       <article class="tile is-child notification ">
         <p class="title">Email</p>
-        <p class="subtitle">si.ghoststory@gmail.com</p>
+        <p class="subtitle">{!!setting('contact.email')!!}</p>
       </article>
     </div>
   <br>
@@ -54,7 +54,7 @@
 
         <div class="columns">
             <div class="column is-9">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d105884.89453243214!2d-6.939664485723569!3d33.969333764525686!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xda76b871f50c5c1%3A0x7ac946ed7408076b!2sRabat!5e0!3m2!1sen!2sma!4v1731042263643!5m2!1sen!2sma" width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            {!!setting('contact.maps')!!}
             </div>
             <div class="column is-3">
                 <form action="{{ url('/contact') }}" method="post">
