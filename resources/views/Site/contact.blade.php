@@ -21,7 +21,11 @@
 
     <br>
     <div class="container">
-
+      @if(session('success'))
+      <div class="notification is-success">
+        {{ session('success') }}
+      </div>
+      @endif
     <div class="tile is-ancestor">
     <!-- First tile (Telephone) -->
     <div class="tile is-parent">
@@ -59,21 +63,32 @@
                     <div class="field">
                         <label for="name">Name</label>
                         <div class="control">
-                            <input name="name" type="text" id="name" class="input" placeholder="Name">
+                            <input name="name" value="{{ old('name') }}" type="text" id="name" class="input @if($errors->has('name')) is-danger @endif" placeholder="Name">
+                            @if($errors->has('name'))
+                            <p class="help is-danger">{{ $errors->first('name') }}</p>
+                            @endif
                         </div>
                     </div>
                     <!-- email -->
                     <div class="field">
                         <label for="email">Email</label>
                         <div class="control">
-                            <input name="email" type="text" id="email" class="input" placeholder="Email">
+                            <input name="email" value="{{ old('email') }}" type="text" id="email" class="input @if($errors->has('email')) is-danger @endif" placeholder="Email">
+                            @if($errors->has('email'))
+                            <p class="help is-danger">{{ $errors->first('email') }}</p>
+                            @endif
                         </div>
                     </div>
                     <!-- message -->
                     <div class="field">
                         <label for="your message">your message</label>
                         <div class="control">
-                            <textarea name="message" type="text" id="your-message" class="input" placeholder="your message"></textarea>
+                            <textarea name="message" type="text" id="your-message" class="textarea @if($errors->has('message')) is-danger @endif" placeholder="your message">
+                              {{ old('message') }}
+                            </textarea>
+                            @if($errors->has('message'))
+                            <p class="help is-danger">{{ $errors->first('message') }}</p>
+                            @endif
                         </div>
                     </div>
 

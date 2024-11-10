@@ -39,15 +39,25 @@ class SiteController extends Controller
     }
 
     public function storeContact(Request $request){
-         $message = new Message();
-         
-         $message->name = $request->get('name');
-         $message->email = $request->get('email');
-         $message->message = $request->get('message');
 
-         $message->save();
+         // Validate the request data
+         $data = $request->validate([
+            'name' => 'required',
+            'email' => 'required|email',
+            'message' => 'required|min:5|max:300'
+      ]);
 
-         return redirect('/contact');
+      // Create a new message instance and assign the validated data
+      $message = new Message();
+      $message->name = $data['name'];
+      $message->email = $data['email'];
+      $message->message = $data['message'];
+
+      // Save the message to the database
+      $message->save();
+
+      // Redirect back to the contact page with a success message
+      return redirect('/contact')->with('success', "Thank you, {$message->name}! Your message has been sent successfully.");
    }
 
     public function show($id){
