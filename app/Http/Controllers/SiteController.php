@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\Post,App\Models\Service,App\Models\Slide,App\Models\Page,App\Models\Message;
+use App\Models\Post,App\Models\Service,App\Models\Slide,App\Models\Page,App\Models\Message,App\Models\Category;
 use Illuminate\Http\Request;
 
 class SiteController extends Controller
@@ -25,8 +25,9 @@ class SiteController extends Controller
  }
 
     public function blog(){
+         $categories = category::all();
          $posts = Post::paginate(4);
-       return view('Site.blog' ,['posts' => $posts]);        
+       return view('Site.blog' ,['posts' => $posts],['categories'=>$categories]);        
     }
 
     public function about(){

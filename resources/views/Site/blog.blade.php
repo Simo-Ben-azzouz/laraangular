@@ -19,7 +19,18 @@
     </div>
   </div>
   <div class="container">
-      
+        <div class="columns">
+          <div class="column">
+          <div class="tabs is-centered">
+              <ul>
+                <li class="is-active"><a>Pictures</a></li>
+                <li><a>Music</a></li>
+                <li><a>Videos</a></li>
+                <li><a>Documents</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
       @foreach($posts -> chunk(2) as $chunk)
       <div class="columns mt-4 mb-4">
             @foreach($chunk as $post)
