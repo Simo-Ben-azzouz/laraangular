@@ -30,9 +30,10 @@ class SiteController extends Controller
        return view('Site.blog' ,['posts' => $posts],['categories'=>$categories]);        
     }
    //  show posts in categories
-   public function getPostsOfCategory($id){
-      $posts = Post::where('category_id',$id)->paginate(4);
-      $categories = category::all();
+   public function getPostsOfCategory($slug){
+      $category = Category::where('slug',$slug)->first();
+      $posts = $category->posts()->paginate(4);
+      $categories = Category::all();
       return view('Site.blog' ,['posts' => $posts],['categories'=>$categories]);
    }
     public function about(){

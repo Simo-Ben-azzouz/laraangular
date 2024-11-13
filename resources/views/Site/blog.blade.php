@@ -25,7 +25,7 @@
               <ul>
                 <li class="is-active"><a href="{{url('/blog')}}">All</a></li>
                 @foreach($categories as $category)
-                <li><a href="{{url('/posts/'.$category->id)}}">{{ $category->name }}</a></li>
+                <li><a href="{{url('/posts/'.$category->slug)}}">{{ $category->name }}</a></li>
                @endforeach
               </ul>
             </div>
@@ -58,7 +58,12 @@
     <div class="content">
             <!-- {{ $post ->excerpt }} -->
             {!! Str::limit($post ->excerpt, 90, ' ...') !!}
-
+            @if($post->category)
+            <br>
+              <a href="{{ url('/posts/'.$post->category->slug) }}">{{ $post->category->name }}</a>
+            @else
+              <span>No category</span>
+            @endif
       <br />
       <time>{{ carbon\carbon::parse($post -> created_at)->ToFormattedDateString() }}</time>
     </div>
