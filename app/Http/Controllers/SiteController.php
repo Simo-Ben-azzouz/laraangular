@@ -66,8 +66,8 @@ class SiteController extends Controller
       return redirect('/contact')->with('success', "Thank you, {$message->name}! Your message has been sent successfully.");
    }
 
-    public function show($id){
-        $post = Post::find($id);
+    public function show($slug){
+        $post = Post::where('slug',$slug)->first();
       return view('Site.show',['post' => $post]);        
    }
 }

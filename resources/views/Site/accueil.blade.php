@@ -74,10 +74,10 @@
         <div class="card">
   <div class="card-image">
     <figure class="image is-16by9">
-      <a href="{{ url('blog/'.$post->id) }}">
+      <a href="{{ url('blog/'.$post->slug) }}">
         <img
-          src="{{ url('/storage/'.$post -> image) }}"
-          alt="Placeholder image"
+          src="{{ asset('/storage/'.$post -> image) }}"
+          alt="{{ $post->title }}"
         />
       </a>
     </figure>
