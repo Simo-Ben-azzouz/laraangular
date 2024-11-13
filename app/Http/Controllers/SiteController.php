@@ -29,7 +29,12 @@ class SiteController extends Controller
          $posts = Post::paginate(4);
        return view('Site.blog' ,['posts' => $posts],['categories'=>$categories]);        
     }
-
+   //  show posts in categories
+   public function getPostsOfCategory($id){
+      $posts = Post::where('category_id',$id)->paginate(4);
+      $categories = category::all();
+      return view('Site.blog' ,['posts' => $posts],['categories'=>$categories]);
+   }
     public function about(){
       $page =Page::where('slug','about1')->first();
        return view('Site.about',['page'=>$page]);        

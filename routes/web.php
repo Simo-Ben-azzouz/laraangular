@@ -23,10 +23,11 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [App\Http\Controllers\SiteController::class, 'index']);
 Route::get('/services', [App\Http\Controllers\SiteController::class, 'services']);
 Route::get('/blog', [App\Http\Controllers\SiteController::class, 'blog']);
+Route::get('/blog/{id}', [App\Http\Controllers\SiteController::class, 'show']);
+Route::get('/posts/{id}', [App\Http\Controllers\SiteController::class, 'getPostsOfCategory']);
 Route::get('/about', [App\Http\Controllers\SiteController::class, 'about']);
 Route::get('/contact', [App\Http\Controllers\SiteController::class, 'contact']);
 Route::post('/contact', [App\Http\Controllers\SiteController::class, 'storeContact']);
-Route::get('/blog/{id}', [App\Http\Controllers\SiteController::class, 'show']);
 Route::get('/service/{id}', [App\Http\Controllers\SiteController::class, 'service']);
 
 

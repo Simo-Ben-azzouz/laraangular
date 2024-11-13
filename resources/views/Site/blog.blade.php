@@ -23,10 +23,10 @@
           <div class="column">
           <div class="tabs is-centered">
               <ul>
-                <li class="is-active"><a>Pictures</a></li>
-                <li><a>Music</a></li>
-                <li><a>Videos</a></li>
-                <li><a>Documents</a></li>
+                <li class="is-active"><a href="{{url('/blog')}}">All</a></li>
+                @foreach($categories as $category)
+                <li><a href="{{url('/posts/'.$category->id)}}">{{ $category->name }}</a></li>
+               @endforeach
               </ul>
             </div>
           </div>
