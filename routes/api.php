@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 Route::get('/posts/{limit?}', [App\Http\Controllers\Api\PostsController::class, 'getAllPosts']);
-Route::get('/post/{id}', [App\Http\Controllers\Api\PostsController::class, 'getPostById']);
+Route::get('/post/show/{slug}', [App\Http\Controllers\Api\PostsController::class, 'getPostById']);
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();

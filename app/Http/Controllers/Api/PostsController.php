@@ -10,10 +10,14 @@ use Illuminate\Http\Request;
 class PostsController extends Controller
 {
     public function getAllPosts($limit=null){
-        return PostsResource::collection(Post::take($limit)->get());
+        if ($limit != null && $limit > 0) {
+            return PostsResource::collection(Post::take($limit)->get());
+        }
+        return PostsResource::collection(Post::all());
+
     }   
     
-    public function getPostById($id){
-        return new PostsResource(Post::find($id));
+    public function getPostById($slug){
+        return new PostsResource(Post::whereSlug($slug)->first());
     }
 }
