@@ -14,14 +14,15 @@ class PostsResource extends JsonResource
      */
     public function toArray($request)
     {
+
         return [
             "id" => $this->id ,
             "category" => $this->category_id ,
             "titre" => $this->title ,
             "slug" => $this->slug ,
             "contenu" => $this->body ,
-            "description" => $this->excerpte ,
-            "image" => $this->image ,
+            "description" => $this->excerpte ,  
+            "image" => asset('storage/'.$this->image),
             "dateCreation" => $this->created_at ,
         ];
     }
